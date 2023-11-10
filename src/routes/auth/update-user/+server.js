@@ -36,6 +36,13 @@ export async function POST(context){
         }));
     };
 
+    if(getSubject.nickname === "admin" && newUpdateObject.password !== ""){
+        return new Response(JSON.stringify({
+            status: 403,
+            message: "Hata: Demo Sürümünde admin kullanıcısının şifresini değiştiremezsiniz."
+        }))
+    }
+
     //----------
 
     await updateDocument("users", getSubject[0].id, newUpdateObject);
