@@ -1,7 +1,9 @@
 import { redirect, json } from "@sveltejs/kit";
 import { fetchDatasWithFiltering } from "../../../lib/firebase";
 import { decrypt4 } from "necdetiye-crypto";
-import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+
+let { sign } = jwt;
 
 export async function POST(context){
     console.log("our context object: ", context);

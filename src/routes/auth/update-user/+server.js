@@ -1,4 +1,5 @@
 import { fetchDatasWithFiltering, fetchOneDataById, updateDocument } from '../../../lib/firebase.js'
+import { encrypt4 } from 'necdetiye-crypto';
 
 export async function POST(context){
     let body = await context.request.json()
@@ -16,7 +17,11 @@ export async function POST(context){
 
     for(let [key, value] of Object.entries(body)){
         if(key !== "updaterName" && key !== "subjectName" && key !== "role"){
-            newUpdateObject[key] = value;
+            if(key === "password"){
+                newUpdateObject[key] = encrypt4(value, "asdfsdasfasdsfd")
+            } else {
+                newUpdateObject[key] = value;
+            }
         };
     };
     
