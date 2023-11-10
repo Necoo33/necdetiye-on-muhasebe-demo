@@ -1,6 +1,8 @@
 import { redirect } from '@sveltejs/kit';
-import { decode, verify } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { checkToken } from '../../lib/auth';
+
+let { decode, verify } = jwt;
 
 // bu sahife sayesinde kullanıcı nesnesi dahildeki bütün rotalardan kabil-i visal oluyor.
 

@@ -1,4 +1,6 @@
-import { verify, decode } from "jsonwebtoken";
+import jwtPackage from "jsonwebtoken";
+
+let { verify, decode } = jwtPackage;
 
 export function checkToken(cookies){
     let authToken = cookies.get("imom-auth-token");
